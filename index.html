@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="img-wrapper">
+        <div>
+            <label for="image_uploads" class="img-upload-btn">Upload </label>
+            <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" style="opacity: 0;">
+        </div>
+        <br>
+        <div class="preview">
+            <p class="no-pic">No Pic uploaded</p>
+            <img src="" class="profile-img" style="opacity: 0;">
+        </div>
+    </div>
+
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        const input = document.querySelector("input");
+        const preview = document.querySelector(".preview");
+        const para = document.querySelector(".no-pic");
+        const image = document.querySelector(".profile-img");
+        input.addEventListener("change", updateImageDisplay);
+        function updateImageDisplay() {
+            para.style.display = "none";
+            const curFiles = input.files;
+            image.src = URL.createObjectURL(curFiles[0]);
+            image.style.opacity = 1;
+        }
+    </script>
+
+</body>
+
+</html>
